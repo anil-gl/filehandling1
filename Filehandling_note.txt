@@ -1,0 +1,137 @@
+                               Python File Handling Notes
+
+Introduction to File Handling
+File Handling in Python allows reading, writing, and manipulating files on the system.
+Python provides built-in functions and methods for file operations.
+
+Types of File Handling Modes
+Read Mode ('r'):
+Opens a file for reading.
+File must exist; otherwise, it raises a FileNotFoundError.
+Write Mode ('w'):
+Opens a file for writing (overwrites if the file exists or creates a new one if it doesn’t).
+If the file exists, its content is deleted.
+Append Mode ('a'):
+Opens a file for writing but appends to the end of the file if it exists.
+Creates the file if it does not exist.
+Read and Write Mode ('r+'):
+Opens a file for both reading and writing.
+File must exist; otherwise, an error is raised.
+Write and Read Mode ('w+'):
+Opens a file for reading and writing but overwrites the existing file.
+Append and Read Mode ('a+'):
+Opens a file for reading and writing but appends to the end of the file.
+Binary Mode ('b'):
+Used to handle binary files (images, PDFs, etc.).
+Combined with other modes, e.g., 'rb', 'wb'.
+
+File Methods
+open() Function:
+Syntax: open(file, mode)
+Returns a file object.
+close() Method:
+Syntax: file.close()
+Closes the file, freeing up resources.
+read() Method:
+Reads the entire content of the file.
+Syntax: file.read(size) (optional size specifies bytes to read).
+readline() Method:
+Reads one line from the file.
+Useful for line-by-line reading.
+readlines() Method:
+Reads all lines in a file and returns a list of lines.
+write() Method:
+Writes a string to the file.
+Syntax: file.write("text")
+writelines() Method:
+Writes a list of strings to the file.
+Each string in the list is written as a line.
+seek() Method:
+Moves the file pointer to a specified position.
+Syntax: file.seek(offset, whence):
+offset: Number of bytes to move.
+whence: Position reference (0 = beginning, 1 = current, 2 = end).
+tell() Method:
+Returns the current position of the file pointer.
+
+Context Manager (with Statement)
+Ensures proper file handling by automatically closing the file.
+Syntax:
+python
+Copy code
+with open("filename.txt", "r") as file:
+    content = file.read()
+# No need to explicitly close the file
+
+
+
+Error Handling in File Operations
+Common Exceptions:
+FileNotFoundError: Raised when a file is not found.
+PermissionError: Raised when the program lacks permission to access the file.
+IOError: General input/output error.
+Example:
+python
+Copy code
+try:
+    with open("file.txt", "r") as file:
+        content = file.read()
+except FileNotFoundError:
+    print("File not found.")
+except IOError:
+    print("Error reading the file.")
+
+
+
+Working with Different File Types
+Text Files:
+Default mode is 'r' or 'w'.
+Data is read/written as strings.
+Binary Files:
+Open with 'b' mode (e.g., 'rb', 'wb').
+Data is read/written as bytes.
+
+Examples
+Reading a File:
+python
+Copy code
+with open("file.txt", "r") as file:
+    content = file.read()
+    print(content)
+
+
+Writing to a File:
+python
+Copy code
+with open("file.txt", "w") as file:
+    file.write("Hello, World!")
+
+
+Appending to a File:
+python
+Copy code
+with open("file.txt", "a") as file:
+    file.write("\nNew line added.")
+
+
+Reading Line-by-Line:
+python
+Copy code
+with open("file.txt", "r") as file:
+    for line in file:
+        print(line.strip())
+
+
+
+Best Practices
+Always close the file (or use the with statement).
+Handle exceptions for robust error management.
+Use appropriate modes for operations ('r', 'w', 'a').
+Validate file paths and check for file existence before operations.
+Avoid hardcoding file paths; use variables or user inputs.
+
+Summary
+File handling is crucial for persistent storage and data manipulation.
+Python provides various modes and methods for efficient file operations.
+Using context managers ensures proper resource management.
+
