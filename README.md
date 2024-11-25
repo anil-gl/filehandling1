@@ -48,8 +48,8 @@ sql
 Copy code
 Enter User ID: 1
 Enter User Name: Alice
-Enter User Email: alice@example.com
-User 'Alice' added successfully.
+Enter User Email: anil@example.com
+User 'Anile' added successfully.
 
 
 Displaying All Users
@@ -58,7 +58,7 @@ sql
 Copy code
 --- User Data ---
 ID,Name,Email
-1,Alice,alice@example.com
+1,Anil,anil@example.com
 
 
 Updating a User
@@ -66,7 +66,7 @@ Example:
 sql
 Copy code
 Enter User ID to update: 1
-Enter new name (leave blank to keep unchanged): Alice Johnson
+Enter new name (leave blank to keep unchanged): mani 
 Enter new email (leave blank to keep unchanged): 
 User ID 1 updated successfully.
 
