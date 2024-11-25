@@ -3,8 +3,15 @@ import os
 # File path for storing user data
 USER_FILE = 'user_data.txt'
 
-# Function to initialize the user file if it doesn't exist
 def initialize_file():
+    """
+    Initializes the user data file if it does not exist.
+    Creates a file with a header "ID,Name,Email".
+    
+    Exceptions:
+        PermissionError: Raised if there is a permission issue creating the file.
+        Exception: Catches and displays other unforeseen errors.
+    """
     try:
         if not os.path.exists(USER_FILE):
             with open(USER_FILE, 'w') as file:
@@ -17,8 +24,14 @@ def initialize_file():
     except Exception as e:
         print(f"Error initializing file: {e}")
 
-# Function to add a new user
 def add_user():
+    """
+    Adds a new user to the user data file.
+    Prompts the user to enter ID, Name, and Email, and appends the information to the file.
+    
+    Exceptions:
+        Exception: Catches and displays errors while writing to the file.
+    """
     try:
         user_id = input("Enter User ID: ")
         name = input("Enter User Name: ")
@@ -31,8 +44,15 @@ def add_user():
     except Exception as e:
         print(f"Error adding user: {e}")
 
-# Function to display all users
 def display_users():
+    """
+    Displays all users from the user data file.
+    Reads the file and prints each line (user data).
+    
+    Exceptions:
+        FileNotFoundError: Raised if the user data file is not found.
+        Exception: Catches and displays other unforeseen errors while reading the file.
+    """
     try:
         if not os.path.exists(USER_FILE):
             raise FileNotFoundError(f"File '{USER_FILE}' not found.")
@@ -46,8 +66,14 @@ def display_users():
     except Exception as e:
         print(f"Error reading file: {e}")
 
-# Function to update user details by ID
 def update_user():
+    """
+    Updates a user's details in the user data file based on their ID.
+    Prompts for the user ID and allows updating the name and/or email.
+    
+    Exceptions:
+        Exception: Catches and displays errors during file read/write operations.
+    """
     try:
         user_id = input("Enter User ID to update: ")
         new_name = input("Enter new name (leave blank to keep unchanged): ")
@@ -77,8 +103,14 @@ def update_user():
     except Exception as e:
         print(f"Error updating user: {e}")
 
-# Function to delete a user by ID
 def delete_user():
+    """
+    Deletes a user from the user data file based on their ID.
+    Prompts for the user ID and removes the corresponding record if found.
+    
+    Exceptions:
+        Exception: Catches and displays errors during file read/write operations.
+    """
     try:
         user_id = input("Enter User ID to delete: ")
         deleted = False
@@ -102,8 +134,17 @@ def delete_user():
     except Exception as e:
         print(f"Error deleting user: {e}")
 
-# Main function with a menu for user interaction
 def main():
+    """
+    Main function that provides a menu for interacting with the user registration system.
+    Options:
+        1. Add User
+        2. Display All Users
+        3. Update User
+        4. Delete User
+        5. Exit
+    Calls appropriate functions based on the user's choice and handles invalid input.
+    """
     initialize_file()
 
     while True:
